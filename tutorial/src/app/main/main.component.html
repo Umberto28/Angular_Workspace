@@ -1,0 +1,14 @@
+<div>
+    <h1 colorDirective color="blue">Pagina principale</h1>
+    <br>
+    <h3>Caricamento al {{ progress }}%</h3>
+    <p style="color: red">{{ error }}</p>
+    <div class="uploadfilecontainer" (click)="fileInput.click()" appDragdrop (onFileDropped)="onDrag($event)">
+        <input hidden type="file" #fileInput (change)="onDrag($any($event.target).files)">
+    </div>
+    <div class="file-list" *ngFor="let up of toUpload">
+        <p class="file-name">{{ up.name }}</p>
+        <button class="delete-file btn btn-danger" (click)="toUpload.splice(toUpload.indexOf(up),1)">Delete</button>
+    </div>
+    <button class="btn btn-primary" (click)="send()" [disabled]="toUpload.length == 0">Upload</button>
+</div>

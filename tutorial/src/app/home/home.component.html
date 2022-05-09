@@ -1,0 +1,26 @@
+<div #about *ngIf="show">
+    <h2>Ciao {{ user == null ? 'utente sconosciuto' : user }}</h2>
+    <p [style.backgroundColor]=color [ngClass]="{'big' : size == 'big','small' : size == 'small'}">
+        {{ today }}
+        {{ money | currency }}
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore vero laudantium natus, reiciendis dolore repudiandae architecto tempore praesentium culpa, iure quasi, asperiores similique voluptate quo quia! Explicabo quae voluptates dignissimos corrupti consectetur repellat cum vero atque saepe, omnis doloremque sapiente eum vel deleniti illum facilis maiores consequuntur exercitationem perspiciatis quidem!</p>
+    <select (change)="hello()" [formControl]="selectField">
+        <option value="1">Rosso</option>
+        <option value="2">Verde</option>
+        <option value="3">Blu</option>
+    </select>
+    <button (click)="printElement()"></button>
+</div>
+<button id="button" (click)="showHidden()">Mostra</button>
+<app-sidebar></app-sidebar>
+<div class="mainpage">
+    <h1>Form Ex</h1>
+    <div>
+        <form class="formContainer" [formGroup]="form" (ngSubmit)="send()">
+            <input type="text" class="form-control" placeholder="username" formControlName="user" (input)="checkUser()">
+            <input type="text" class="form-control" placeholder="email" formControlName="email">
+            <input type="text" class="form-control" placeholder="date" formControlName="date">
+            <input type="submit" value="invia">
+        </form>
+    </div>
+</div>
